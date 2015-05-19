@@ -1,0 +1,4 @@
+@charset "utf-8";
+/* Hoja de estilos para impresión */
+
+#comunidad, header, #menu, .itemToolbar, .itemBackToTop {display:none;}

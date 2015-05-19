@@ -1,0 +1,73 @@
+/* Flexible Slide-to-top Accordion Style*/
+.wrapper{
+	width:90%;
+	max-width:800px;
+	margin:30px auto;
+}
+.st-accordion{
+    width:100%;
+    min-width:270px;
+    margin: 0 auto;
+}
+.st-accordion ul {
+	margin: 0;
+	padding: 0;
+}
+.st-accordion ul li{
+    height: 32px;
+	margin-top: 10px;
+    border-bottom: 1px solid #CCCCCC;
+    border-top:1px solid #CCCCCC;
+    overflow: hidden;
+}
+.st-accordion ul li:first-child{
+    border-top:none;
+}
+.st-accordion ul li > a{
+    display: block;
+	position: relative;
+	padding-left: 10px;
+    line-height: 32px;
+	outline:none;
+	color: #003366;
+}
+.st-accordion ul li > a span.mas{
+	display: inline;
+}
+.st-accordion ul li > a span.menos{
+	display:none;
+}
+.st-accordion ul li > a:hover{
+    color: #1693eb;
+}
+.st-accordion ul li > a:hover span{
+	opacity:1;
+	right: 10px;
+}
+.st-accordion ul li.st-open > a{
+	background-color: #FAFAFA;
+	border-bottom: 1px #CCCCCC dotted;
+    color: #1693eb;
+}
+.st-accordion ul li.st-open > a span.mas{
+	display: none;
+}
+.st-accordion ul li.st-open > a span.menos{
+	display: inline;
+}
+.st-content{
+	margin: 0 55px 0 100px;
+    padding: 5px 0px 30px 0px;
+}
+.st-content h1{
+    font-size: 22px;
+}
+.st-content p{
+    line-height: 1.5em;
+}
+.st-content img{
+	margin: 18px 30px 10px 0;
+	float: left;
+    border-radius: 10px;
+	box-shadow: #000000 2px 3px 12px;
+}
