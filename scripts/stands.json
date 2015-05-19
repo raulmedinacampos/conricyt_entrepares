@@ -1,0 +1,244 @@
+{
+	"stand": [
+		{
+			"id": 1,
+			"editorial": "Dotlib",
+			"logo": "dotlib.jpg",
+			"url": "http://www.dotlib.com/",
+			"x": 618,
+			"y": 48
+		},
+		{
+			"id": 2,
+			"editorial": "Dotlib",
+			"logo": "dotlib.jpg",
+			"url": "http://www.dotlib.com/",
+			"x": 557,
+			"y": 48
+		},
+		{
+			"id": 3,
+			"editorial": "Elsevier",
+			"logo": "elsevier.jpg",
+			"url": "http://www.elsevier.com/",
+			"x": 496,
+			"y": 48
+		},
+		{
+			"id": 4,
+			"editorial": "IOP",
+			"logo": "iop.jpg",
+			"url": "http://www.iop.org/",
+			"x": 434,
+			"y": 48
+		},
+		{
+			"id": 5,
+			"editorial": "Infoestratégica",
+			"logo": "infoestrategica.jpg",
+			"url": "http://www.infoestrategica.com/",
+			"x": 373,
+			"y": 48
+		},
+		{
+			"id": 6,
+			"editorial": "Emerald",
+			"logo": "emerald.jpg",
+			"url": "http://www.emeraldinsight.com/",
+			"x": 312,
+			"y": 48
+		},
+		{
+			"id": 7,
+			"editorial": "BioOne",
+			"logo": "bioone.jpg",
+			"url": "http://www.bioone.org/",
+			"x": 251,
+			"y": 48
+		},
+		{
+			"id": 8,
+			"editorial": "Revista Acta Universitaria",
+			"logo": "rau.jpg",
+			"url": "http://www.actauniversitaria.ugto.mx/",
+			"x": 190,
+			"y": 48
+		},
+		{
+			"id": 9,
+			"editorial": "Dulces La Tradicional",
+			"logo": "tradicional.jpg",
+			"url": "http://www.latradicionaldesalgado.com.mx/",
+			"x": 129,
+			"y": 48
+		},
+		{
+			"id": 10,
+			"editorial": "AJE",
+			"logo": "aje.jpg",
+			"url": "http://www.aje.mx/",
+			"x": 68,
+			"y": 48
+		},
+		{
+			"id": 11,
+			"editorial": "OCV",
+			"logo": "ocv.jpg",
+			"url": "http://www.leon-mexico.com/",
+			"x": 129,
+			"y": 150
+		},
+		{
+			"id": 12,
+			"editorial": "Akarenni",
+			"logo": "akarenni.jpg",
+			"url": "#",
+			"x": 190,
+			"y": 150
+		},
+		{
+			"id": 13,
+			"editorial": "e-Tech Solutions",
+			"logo": "etech.jpg",
+			"url": "http://www.etechwebsite.com/",
+			"x": 312,
+			"y": 150
+		},
+		{
+			"id": 14,
+			"editorial": "Oxford",
+			"logo": "oxford.jpg",
+			"url": "http://www.oup.com/",
+			"x": 373,
+			"y": 150
+		},
+		{
+			"id": 15,
+			"editorial": "Swets",
+			"logo": "swets.jpg",
+			"url": "http://www.swets.es/",
+			"x": 496,
+			"y": 150
+		},
+		{
+			"id": 16,
+			"editorial": "Thomson",
+			"logo": "thomson.jpg",
+			"url": "http://thomsonreuters.com/",
+			"x": 557,
+			"y": 150
+		},
+		{
+			"id": 17,
+			"editorial": "Wiley",
+			"logo": "wiley.jpg",
+			"url": "http://www.wiley.com/",
+			"x": 557,
+			"y": 191
+		},
+		{
+			"id": 18,
+			"editorial": "Cambridge",
+			"logo": "cambridge.jpg",
+			"url": "http://www.cam.ac.uk/",
+			"x": 496,
+			"y": 191
+		},
+		{
+			"id": 19,
+			"editorial": "Lippincott",
+			"logo": "lippincott.jpg",
+			"url": "http://www.lww.com/",
+			"x": 373,
+			"y": 191
+		},
+		{
+			"id": 20,
+			"editorial": "Lippincott",
+			"logo": "lippincott.jpg",
+			"url": "http://www.lww.com/",
+			"x": 312,
+			"y": 191
+		},
+		{
+			"id": 21,
+			"editorial": "CICY",
+			"logo": "cicy.jpg",
+			"url": "http://www.cicy.mx/",
+			"x": 190,
+			"y": 191
+		},
+		{
+			"id": 22,
+			"editorial": "CICY",
+			"logo": "cicy.jpg",
+			"url": "http://www.cicy.mx/",
+			"x": 129,
+			"y": 191
+		},
+		{
+			"id": 25,
+			"editorial": "eScire",
+			"logo": "escire.jpg",
+			"url": "http://escire.mx/",
+			"x": 187,
+			"y": 293
+		},
+		{
+			"id": 26,
+			"editorial": "ACS",
+			"logo": "acs.jpg",
+			"url": "http://www.acs.org/",
+			"x": 247,
+			"y": 293
+		},
+		{
+			"id": 27,
+			"editorial": "Taylor & Francis",
+			"logo": "taylor.jpg",
+			"url": "http://www.taylorandfrancis.com/",
+			"x": 310,
+			"y": 293
+		},
+		{
+			"id": 28,
+			"editorial": "Systems Link",
+			"logo": "systems.jpg",
+			"url": "http://systemsint.info/es/",
+			"x": 371,
+			"y": 293
+		},
+		{
+			"id": 29,
+			"editorial": "Systems Link",
+			"logo": "systems.jpg",
+			"url": "http://systemsint.info/es/",
+			"x": 432,
+			"y": 293
+		},
+		{
+			"id": 30,
+			"editorial": "Nature",
+			"logo": "nature.jpg",
+			"url": "http://www.nature.com/",
+			"x": 493,
+			"y": 293
+		},
+		{
+			"id": 31,
+			"editorial": "Springer",
+			"logo": "springer.jpg",
+			"url": "http://www.springer.com/",
+			"x": 554,
+			"y": 293
+		},
+		{
+			"id": 32,
+			"editorial": "EBSCO",
+			"logo": "ebsco.jpg",
+			"url": "http://www.ebscohost.com/",
+			"x": 615,
+			"y": 293
+		}
+	]
+}
