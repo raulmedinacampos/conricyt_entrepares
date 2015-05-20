@@ -5,7 +5,7 @@
 			$this->load->model('registro_model', 'registro', TRUE);
 		}
 		
-		private function generarFolio($prefijo = "EP2014") {
+		private function generarFolio($prefijo = "EP2015") {
 			$anterior = $this->registro->getFolio();
 			if(!$anterior) {
 				$folio = $prefijo." - "."00001";
@@ -91,7 +91,6 @@
 			$header = '<p class="header"><img src="'.base_url().'images/header_pdf.jpg" /></p>';
 			$footer = '<p class="footer"><strong>Oficina del Consorcio Nacional de Recursos de Información Científica y Tecnológica</strong><br />Av. Insurgentes Sur 1582, Col. Crédito Constructor, Del. Benito Juárez, C.P. 03940 México D.F. – Tel: 5322 7700 ext. 4020 a la 4026</p>';
 			$html = '<div class="contenido">';
-			$html .= '<p class="titulo1">"2014, Año de Octavio Paz"</p>';
 			$html .= '<p class="titulo2">Consorcio Nacional de Recursos de Información Científica y Tecnológica</p>';
 			$html .= '<p class="fecha">'.$fecha.'</p>';
 			$html .= '<p class="remitente">ESTIMADO(A) '.$nombre_completo.'<br />'.$institucion.'<br />P r e s e n t e:</p>';
@@ -168,12 +167,11 @@
 			$header = '<p class="header"><img src="'.base_url().'images/header_pdf.jpg" /></p>';
 			$footer = '<p class="footer"><strong>Oficina del Consorcio Nacional de Recursos de Información Científica y Tecnológica</strong><br />Av. Insurgentes Sur 1582, Col. Crédito Constructor, Del. Benito Juárez, C.P. 03940 México D.F. – Tel: 5322 7700 ext. 4020 a la 4026</p>';
 			$html = '<div class="contenido">';
-			$html .= '<p class="titulo1">"2014, Año de Octavio Paz"</p>';
 			$html .= '<p class="titulo2">Consorcio Nacional de Recursos de Información Científica y Tecnológica</p>';
 			$html .= '<p class="fecha">'.$fecha.'</p>';
 			$html .= '<p class="remitente">ESTIMADO(A) '.$remitente.'<br />'.$institucion.'<br />P r e s e n t e:</p>';
-			$html .= '<p>El Consorcio Nacional de Recursos de Información Científica y Tecnológica y la Universidad de Guanajuato, tienen el agrado de invitarle cordialmente a <strong>"Entre Pares". Tercer Seminario para publicar y navegar en las redes de la Información Científica</strong>, cuyo objetivo central es promover la producción de artículos científicos entre la comunidad académica de posgrado e investigación del país; propiciando un espacio de encuentro con las principales editoriales científicas internacionales.</p>';
-			$html .= '<p>El Seminario tendrá lugar los días 22 y 23 de septiembre de 2014, en el Poliforum, en la Ciudad de León, recinto Sede del Seminario, seleccionado por la Universidad de Guanajuato, institución coorganizadora del evento, dentro de la celebración de sus 20 años de Autonomía Universitaria y cuyo programa completo podrá consultarlo en la página http://entrepares.conricyt.mx.';
+			$html .= '<p>El Consorcio Nacional de Recursos de Información Científica y Tecnológica y el Centro de Investigación Científica de Yucatán (CICY), tienen el agrado de invitarle cordialmente a <strong>"Entre Pares". Cuarto Seminario para publicar y navegar en las redes de la Información Científica</strong>, cuyo objetivo central es promover la producción de artículos científicos entre la comunidad académica de posgrado e investigación del país; propiciando un espacio de encuentro con las principales editoriales científicas internacionales.</p>';
+			$html .= '<p>El Seminario tendrá lugar los días 5 y 6 de octubre de 2015, en el Centro de Convenciones Yucatán Siglo XXI, recinto Sede del Seminario, seleccionado por el Centro de Investigación Científica de Yucatán, institución coorganizadora del evento y cuyo programa completo podrá consultarlo en la página http://entrepares.conricyt.mx.';
 			$html .= '<p>Agradecemos su interés en participar.</p>';
 			$html .= '<p class="firma">A t e n t a m e n t e,</p>';
 			$html .= '<blockquote><p><img src="'.base_url().'images/firma_pdf.jpg" /></p></blockquote>';
@@ -259,9 +257,9 @@
 			$ap_materno = $data['ap_materno'];
 			$remitente = $nombre." ".$ap_paterno." ".$ap_materno;
 			$remitente = trim($remitente);
-			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro y Carta invitaci&oacute;n para asistir al Seminario Entre Pares. Tercer Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
+			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro y Carta invitaci&oacute;n para asistir al Seminario Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
 			$body .= '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a la Carta Invitaci&oacute;n, la cual podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Tercer Seminario Entre Pares, que tendr&aacute; lugar los d&iacute;as 22 y 23 de septiembre de 2014 en el Poliforum, en la Ciudad de Le&oacute;n, Guanajuato.</font></p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a la Carta Invitaci&oacute;n, la cual podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Cuarto Seminario Entre Pares, que tendr&aacute; lugar los d&iacute;as 5 y 6 de octubre de 2015 en el Centro de Convenciones Yucatán Siglo XXI.</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">Para confirmar tu registro en la sede es necesario que lleves impreso el comprobante de preregistro o, en su defecto, presentar el c&oacute;digo QR en un dispositivo m&oacute;vil (tablet o celular). Una vez confirmado recibir&aacute;s el kit de bienvenida en donde encontrar&aacute;s tu gafete para acceder a las actividades acad&eacute;micas del Seminario.</p>';
 			$body .= '<p><font size="3" face="Arial" color="#FF0000">En caso de alguna duda, por favor comun&iacute;cate al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026 o bien escr&iacute;benos a la cuenta entrepares@conricyt.mx</font></p>';
 			$body .= '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#e0e0e0" align="center"><font size="3" face="Arial" color="#005199"><strong>Consorcio Nacional de Recursos de Informaci&oacute;n Cient&iacute;fica y Tecnol&oacute;gica (CONRICYT)</strong></font></td></tr></table>';
@@ -278,8 +276,8 @@
 			
 			$this->phpmailer->SetFrom('conricyt@gmail.com', 'CONRICyT');
 			$this->phpmailer->AddReplyTo('no-replay@conacyt.mx', 'CONRICyT');
-			$this->phpmailer->Subject    = "Seminario Entre Pares 2014";
-			$this->phpmailer->AltBody    = "Seminario Entre Pares 2014";
+			$this->phpmailer->Subject    = "Seminario Entre Pares 2015";
+			$this->phpmailer->AltBody    = "Seminario Entre Pares 2015";
 			
 			$this->phpmailer->MsgHTML($body);
 			
@@ -310,7 +308,7 @@
 			$ap_materno = $data['ap_materno'];
 			$remitente = $nombre." ".$ap_paterno." ".$ap_materno;
 			$remitente = trim($remitente);
-			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro para asistir al Seminario Entre Pares. Tercer Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
+			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro para asistir al Seminario Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
 			$body .= '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a el comprobante de preregistro, el cual es necesario que lleves impreso o, en su defecto, presentar el c&oacute;digo QR en un dispositivo m&oacute;vil (tablet o celular). Una vez confirmado recibir&aacute;s el kit de bienvenida en donde encontrar&aacute;s tu gafete para acceder a las actividades acad&eacute;micas del Seminario.</p>';
 			$body .= '<p><font size="3" face="Arial" color="#FF0000">En caso de alguna duda, por favor comun&iacute;cate al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026 o bien escr&iacute;benos a la cuenta entrepares@conricyt.mx</font></p>';
@@ -328,8 +326,8 @@
 			
 			$this->phpmailer->SetFrom('conricyt@gmail.com', 'CONRICyT');
 			$this->phpmailer->AddReplyTo('no-replay@conacyt.mx', 'CONRICyT');
-			$this->phpmailer->Subject    = "Seminario Entre Pares 2014";
-			$this->phpmailer->AltBody    = "Seminario Entre Pares 2014";
+			$this->phpmailer->Subject    = "Seminario Entre Pares 2015";
+			$this->phpmailer->AltBody    = "Seminario Entre Pares 2015";
 			
 			$this->phpmailer->MsgHTML($body);
 			
@@ -367,7 +365,7 @@
 			$remitente = $nombre." ".$ap_paterno." ".$ap_materno;
 			$remitente = trim($remitente);
 			$body = '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">Agradecemos el haber obtenido la Carta Invitaci&oacute;n, sin embargo es importante que contin&uacute;es con el procedimiento para elegir las conferencias o talleres de tu inter&eacute;s y as&iacute; concluir con tu Preregistro para el Seminario Entre Pares 2014.</font></p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">Agradecemos el haber obtenido la Carta Invitaci&oacute;n, sin embargo es importante que contin&uacute;es con el procedimiento para elegir las conferencias o talleres de tu inter&eacute;s y as&iacute; concluir con tu Preregistro para el Seminario Entre Pares 2015.</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">A continuaci&oacute;n, considera los siguientes pasos:</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">1. Dar clic o copiar y pegar la siguiente url en tu navegador:</font></p>';
 			$body.= '<p><font size="3" face="Arial"><a href="'.base_url().'preregistro/seleccionar-actividades/'.md5($data['id_usuario']).'">'.base_url().'preregistro/seleccionar-actividades/'.md5($data['id_usuario']).'</a></font></p>';
@@ -406,27 +404,27 @@
 		}
 		
 		public function index() {
-			//$this->load->helper('form');
+			$this->load->helper('form');
 			$this->load->library('herramientas');
 			$herramienta = new Herramientas();
 			$data['title'] = utf8_encode('Preregistro');
 			$data['tools'] = $herramienta->printTitle(utf8_encode("Preregistro"));
 			$data['toolsPie'] = $herramienta->printBackToTop();
-			/*$data['entidades'] = $this->registro->getEntities();
+			$data['entidades'] = $this->registro->getEntities();
 			$data['perfiles'] = $this->registro->getProfiles();
 			$data['cargos'] = $this->registro->getPositions();
 			$data['medios_informacion'] = $this->registro->getInformation();
 			$data['transportes'] = $this->registro->getTransports();
-			$data['eventos1'] = $this->registro->getSchedule('2014-09-22', '1');
-			$data['eventos2'] = $this->registro->getSchedule('2014-09-22', '2,3,4,5,6,7,8,9');
-			$data['columnas'] = $this->registro->getColumns(array(2,3,4,5,6,7,8,9));
-			$data['filas1'] = $this->registro->getRows('2014-09-22', '2,3,4,5,6,7,8,9');
-			$data['eventos3'] = $this->registro->getSchedule('2014-09-23', '1');
-			$data['eventos4'] = $this->registro->getSchedule('2014-09-23', '2,3,4,5,6,7,8,9');
-			$data['filas2'] = $this->registro->getRows('2014-09-23', '2,3,4,5,6,7,8,9');
-			$data['total_recorrido'] = $this->registro->getTotalTours();*/
+			//$data['eventos1'] = $this->registro->getSchedule('2014-09-22', '1');
+			//$data['eventos2'] = $this->registro->getSchedule('2014-09-22', '2,3,4,5,6,7,8,9');
+			//$data['columnas'] = $this->registro->getColumns(array(2,3,4,5,6,7,8,9));
+			//$data['filas1'] = $this->registro->getRows('2014-09-22', '2,3,4,5,6,7,8,9');
+			//$data['eventos3'] = $this->registro->getSchedule('2014-09-23', '1');
+			//$data['eventos4'] = $this->registro->getSchedule('2014-09-23', '2,3,4,5,6,7,8,9');
+			//$data['filas2'] = $this->registro->getRows('2014-09-23', '2,3,4,5,6,7,8,9');
+			$data['total_recorrido'] = $this->registro->getTotalTours();
 			$this->load->view('header', $data);
-			//$this->load->view('registro/formulario', $data);
+			$this->load->view('registro/formulario', $data);
 			$this->load->view('footer');
 		}
 		
