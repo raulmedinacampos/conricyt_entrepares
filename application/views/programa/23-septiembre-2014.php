@@ -67,7 +67,7 @@
 
       <td >Horario</td>
 
-      <td >Planarias<br /> Salón B301 ab</td>
+      <td >Plenarias<br /> Salón B301 ab</td>
 
       <!--<td ></td>
 
@@ -106,28 +106,63 @@ Panorama de la producción científica mexicana en revistas nacionales e interna
     <tr>
 
       <td >11:15 - 12:00</td>
+      
+       <td >
+       
+       <div style=" position:relative; float:left; width:80px; height:30px; top:0px; background-color:#069; color:#FFF; border:#666 1px solid; padding:5px; margin:5px 20px 5px 5px; "> Cambio <br />de Horario </div>
+       
+       
+       <div style=" position:relative; float:left; width:auto; height:auto; "><strong>Mesa. Revistas Gold Open Access. Los modelos de publicación </strong><br />
 
-      <td ><strong>Plenaria. Impacto de la normalización de datos en la evaluación de la producción 
+        <br />
+
+    Dr. Salvatore Mele. Head of Open Access CERN, Scoap3
+<br />Gemma Hersh. Policy Director, Elsevier
+<br />Natalia Timiraos, Springer
+
+
+
+</div>
+
+ </td>
+
+    <!--  <td ><strong>Plenaria. Impacto de la normalización de datos en la evaluación de la producción 
 científica de investigadores e instituciones. Algunas iniciativas
  </strong><br />
 
      Mariana Boletta<br />Thomson Reuters
- </td>
+ </td>-->
 
     </tr>
 
     <tr>
 
       <td >12:00 - 13:00</td>
+	
+    <td >
+      
+       <div style=" position:relative; float:left; width:80px; height:30px; top:0px; background-color:#069; color:#FFF; border:#666 1px solid; padding:5px; margin:5px 20px 5px 5px; "> Cambio <br />de Horario </div>
+       
+       
+       <div style=" position:relative; float:left; width:auto; max-width:500px; height:auto; ">
+    
+        <strong>Plenaria. Impacto de la normalización de datos en la evaluación de la producción 
+científica de investigadores e instituciones. Algunas iniciativas
+ </strong><br />
 
-      <td ><strong>Mesa. Revistas Gold Open Access. Los modelos de publicación </strong><br />
+     Mariana Boletta<br />Thomson Reuters
+     
+     </div>
+ </td>
+    
+  <!--    <td ><strong>Mesa. Revistas Gold Open Access. Los modelos de publicación </strong><br />
 
         <br />
 
     Dr. Salvatore Mele. Head of Open Access CERN, Scoup3
 <br />Gemma Hersh. Policy Director, Elsevier
 <br />Natalia Timiraos, Springer
- </td>
+ </td>-->
 
     </tr>
 
@@ -210,7 +245,7 @@ científica de investigadores e instituciones. Algunas iniciativas
 
       <td><strong>Cambridge University Press</strong>
       <br />
-      <br />Angela Marletto</td>
+      <br />Eduardo Cervantes</td>
 
  	<td rowspan="3"><strong>Springer
 </strong><br /><br />Indra Arroyo</td>
@@ -390,7 +425,7 @@ Adriana Beltrán
       <td rowspan="3" >
       <strong>Cómo publicar en revistas científicas del área de ciencias sociales</strong>
 <br />
-<br />André Jun
+<br />André Jun<br /> Gerente de Publicaciones de Emerald para América Latina
 
       
       
@@ -461,15 +496,23 @@ Adriana Beltrán
 
       <td >15:00 - 15:30</td>
 
-      <td rowspan="2"  ><strong>Cómo postular revistas científicas para su indización </strong>
+      <td rowspan="2"  >
+         <div style=" position:relative; left:50%; margin-left:-40px; width:80px; max-width:80px; height:30px; top:0px; background-color:#069; color:#FFF; border:#666 1px solid; padding:5px;  "> Cambio <br />de Horario </div>
+       <br clear="all" />
+       
+       <div style=" position:relative; width:auto; max-width:500px; height:auto; ">
+      
+      <strong>Cómo postular revistas científicas para su indización </strong>
       
       <br />
      <br /> Mariana Boletta
 Senior Editor, Scientific & Scholarly Research.
 <br />Thomson Reuters
 
-
+</div>
       </td>
+      
+      
 
      <td rowspan="2"  ><strong>Investigadores y nuevas herramientas… y
  <br />¿Qué pasa con el bibliotecario?
@@ -497,13 +540,22 @@ Senior Editor, Scientific & Scholarly Research.
       <td >16:00 - 16:30</td>
 
      <td rowspan="2">
+        <div style=" position:relative; left:50%; margin-left:-40px; width:80px; max-width:80px; height:30px; top:0px; background-color:#069; color:#FFF; border:#666 1px solid; padding:5px;  "> Cambio <br />de Horario </div>
+       <br clear="all" />
+       
+       
+       <div style=" position:relative;  width:auto; max-width:500px; height:auto; ">
+       
       <strong>Retos de los editores de revistas científicas</strong>
       <br />
 <br />Dr. José Merino 
 <br />BMJ Publishing Group
+
+</div>
 </td>
 
       <td rowspan="2">
+      
       <strong>Estrategias y métricas para el retorno de la inversión en recursos de información para las bibliotecas
       </strong>
       <br />

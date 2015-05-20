@@ -5,7 +5,7 @@
 		}
 		
 		public function sede() {
-			$this->output->cache(60);
+			//$this->output->cache(60);
 			$data['title'] = utf8_encode('Sede');
 			$this->load->library('herramientas');
 			$herramienta = new Herramientas();

@@ -49,7 +49,7 @@
 
       <td >Horario</td>
 
-      <td >Planarias<br /> Salón B301 ab</td>
+      <td >Plenarias<br /> Salón B301 ab</td>
 
       <!--<td ></td>
 
@@ -236,7 +236,7 @@ Dra. Rosemary Shinkai, Portificia Universida de Católica do Rio Grande do Sul, 
 
     <tr>
       <td >18:00 - 18:30</td>
-      <td rowspan="2"><strong>Ebsco</strong></td>
+      <td rowspan="2"><strong>Ebsco</strong><br />Alfredo Rivera</td>
       <td><strong>ACM</strong>
       <br />
       <br />Adriana Beltrán</td>
@@ -305,7 +305,7 @@ Elsevier
                             </td>
 
      <td rowspan="3" ><strong>Cómo publicar en una revista científica del área de la medicina y ciencias de la salud</strong  >
-     <br /><br> Dr. Daniel McGowan 
+     <br /><br> Dr. Daniel McGowan <br />
 
 Director del Grupo Científico Edanz Editing  
                             </td>
@@ -347,7 +347,7 @@ Editor Asociado IEEE
       <td rowspan="3" >
       <strong>Cómo publicar una tesis doctoral o disertación</strong>
 		<br />
-        <br />Austin Mclean
+        <br />Austin McLean <br />Director de Comunicación Académica y Publicación de Disertaciones de ProQuest
 </td>
    
     
@@ -359,8 +359,13 @@ Editor Asociado IEEE
     <tr>
       <td >18:00 - 18:30</td>
       <td style="border:0px;"></td>
-      <td style="border:0px;"></td>
-      <!--<td></td>-->
+      <!--<td style="border:0px;"></td>-->
+       <td rowspan="2" ><strong>Cómo publicar en una revista científica</strong>
+      <br />
+      <br />Dra. Mara Daltabuit Test
+      <br />American Journal Experts
+      </td>
+     <!-- <td></td>-->
     </tr>
     
     
@@ -368,7 +373,7 @@ Editor Asociado IEEE
     <tr>
       <td >18:30 - 19:00</td>
       <td style="border:0px;"></td>
-      <td style="border:0px;"></td>
+      <!--<td style="border:0px;"></td>-->
       <!--<td></td>-->
     </tr>
     

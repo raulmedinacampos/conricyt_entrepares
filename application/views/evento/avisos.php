@@ -37,40 +37,22 @@
     <h2>Estacionamiento</h2>
     <p>El Poliforum León cuenta con dos estacionamientos para 250 y 400 autos respectivamente, tiene un costo de 40 pesos por día.</p>
   </div>
-  <div class="aviso">
+  <div class="aviso" style="display:none;">
     <h2>Hoteles</h2>
     <p>Para los asistentes que nos visitan del interior de la República Mexicana o del extranjero, se han establecido convenios con los siguientes hoteles:</p>
-    <table>
-      <tr>
-        <td colspan="3"><h3>TARIFAS</h3></td>
-      </tr>
-      <tr>
-        <td colspan="3">Periodo: del 21 al 23 de septiembre de 2014</td>
-      </tr>
-      <tr>
-        <th>Hotel</th>
-        <th>Tarifa SGL</th>
-        <th>Tarifa DBL</th>
-      </tr>
-      <tr>
-        <td><a href="http://www.marriott.com/hotels/travel/bjxcy-courtyard-leon-at-the-poliforum/" target="_blank">Courtyard Marriot</a></td>
-        <td>$1,293.00</td>
-        <td>$1,368.00</td>
-      </tr>
-      <tr>
-        <td><a href="http://www.realdeminasexpress.com.mx/galeria" target="_blank">Real de Minas Express</a></td>
-        <td>$1,057.00</td>
-        <td>$1,097.00</td>
-      </tr>
-      <tr>
-        <td><a href="http://www.realdeminaspoliforum.com.mx/" target="_blank">Real de Minas Poliforum</a></td>
-        <td>$1,057.00</td>
-        <td>$1,097.00</td>
-      </tr>
-    </table>
-    <p><br />
+    <p>Camino Real Guanajuato<br />
+      Alhóndiga No. 100 Col. San Javier<br />
+      Guanajuato México 36020<br />
+      Teléfono: (473) 102 15 00<br />
+      <a href="http://www.caminoreal.com/destinos/guanajuato/gto-ubicacion" target="_blank">http://www.caminoreal.com/destinos/guanajuato/gto-ubicacion</a></p>
+    <p>Hotel Misión Guanajuato<br />
+      Antiguo a Marfil, km 2.5<br />
+      Noria Alta, 36050 Guanajuato<br />
+      Reservaciones: en México +52 (55) 5209-1700<br />
+      Lada sin costo (en México) 01 800 900 3800<br />
+      <a href="http://www.hotelesmision.com/esp/inicio.aspx" target="_blank">http://www.hotelesmision.com/esp/inicio.aspx</a><br />
     </p>
-</div>
+  </div>
 <?php
 	echo $toolsPie;
 ?>
