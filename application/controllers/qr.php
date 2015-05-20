@@ -9,7 +9,7 @@
 			$id = $this->uri->segment(3);
 			settype($id, "int");
 			header("Content-Type: image/png");
-			$params['data'] = base_url().'registro/confirmar/'.$id;
+			$params['data'] = base_url().'registro/confirmar/'.md5($id);
 			$this->ciqrcode->generate($params);
 		}
 	}

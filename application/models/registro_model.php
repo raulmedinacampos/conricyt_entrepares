@@ -128,7 +128,7 @@
 		}
 		
 		public function getFolio() {
-			$str = "SELECT u.folio FROM usuario u JOIN usuario_programa up ON u.id_usuario = up.usuario JOIN programa p ON up.programa = p.id_programa WHERE up.estatus > 0 AND p.estatus = 1 AND p.programa = 'Seminario Entre Pares 2014' ORDER BY id_usuario DESC LIMIT 1";
+			$str = "SELECT u.folio FROM usuario u JOIN usuario_programa up ON u.id_usuario = up.usuario JOIN programa p ON up.programa = p.id_programa WHERE up.estatus > 0 AND p.estatus = 1 AND p.programa = 'Seminario Entre Pares 2015' ORDER BY id_usuario DESC LIMIT 1";
 			$query = $this->db->query($str);
 			
 			if($query->num_rows() > 0) {
@@ -136,10 +136,12 @@
 			}
 		}
 		
-		public function checkUser($email) {
-			$this->db->select('id_usuario');
-			$this->db->from('usuario');
-			$this->db->where('correo', $email);
+		public function checkUser($usuario) {
+			$this->db->select('usuario, programa');
+			$this->db->from('usuario_programa');
+			$this->db->where('usuario', $usuario);
+			$this->db->where('programa', 3);
+			$this->db->where('estatus >', 0);
 			$query = $this->db->get();
 			
 			if($query->num_rows() > 0) {
@@ -175,6 +177,31 @@
 			$this->db->where('folio', $folio);
 			$query = $this->db->get();
 			
+			if($query->num_rows() > 0) {
+				return $query->row();
+			}
+		}
+		
+		public function getUserByMail($mail) {
+			$this->db->select('
+					id_usuario, 
+					nombre, 
+					ap_paterno, 
+					ap_materno, 
+					sexo, 
+					institucion, 
+					entidad, 
+					id_perfil, 
+					id_cargo, 
+					telefono, 
+					como_se_entero, 
+					forma_transporte'
+					);
+			$this->db->from('usuario');
+			$this->db->where('estatus', 1);
+			$this->db->where('correo', $mail);
+			$query = $this->db->get();
+		
 			if($query->num_rows() > 0) {
 				return $query->row();
 			}
@@ -245,15 +272,24 @@
 			if($this->db->insert('usuario', $data)) {
 				$this->db->set('usuario', $this->db->insert_id());
 				$usr = $this->db->insert_id();
-				$this->db->set('programa', 1);
+				$this->db->set('programa', 3);
 				
 				if(strtotime(date('Y-m-d H:i:s')) < strtotime('2014-09-23 08:00:00')) {
 					$this->db->set('estatus', 2);
 				}
 				
-				$this->db->set('fecha_inscripcion', $data['fecha_alta']);
-				$this->db->insert('usuario_programa');
 				return $usr;
+			}
+		}
+		
+		public function insertProgram($usr, $data) {
+			$this->db->set('usuario', $usr);
+			$this->db->set('programa', 3);
+			$this->db->set('fecha_inscripcion', $data['fecha_alta']);
+			$this->db->set('estatus', 2);
+				
+			if ( $this->db->insert('usuario_programa') ) {
+				return true;
 			}
 		}
 		
@@ -266,6 +302,14 @@
 		
 		public function insertTour($data) {
 			if($this->db->insert('recorrido_guanajuato', $data)) {
+				return true;
+			}
+		}
+		
+		public function updateUser($id, $data) {
+			$this->db->where('id_usuario', $id);
+			
+			if ( $this->db->update('usuario', $data) ) {
 				return true;
 			}
 		}

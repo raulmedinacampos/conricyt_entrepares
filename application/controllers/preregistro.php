@@ -157,6 +157,8 @@
 		}
 		
 		private function crearInvitacion($data) {
+			error_reporting(0);
+			
 			list($fecha, $hora) = explode(" ", $data['fecha_alta']);
 			$fecha = $this->formatearFecha($fecha);
 			$nombre = utf8_decode($data['nombre']);
@@ -170,7 +172,7 @@
 			$html .= '<p class="titulo2">Consorcio Nacional de Recursos de Información Científica y Tecnológica</p>';
 			$html .= '<p class="fecha">'.$fecha.'</p>';
 			$html .= '<p class="remitente">ESTIMADO(A) '.$remitente.'<br />'.$institucion.'<br />P r e s e n t e:</p>';
-			$html .= '<p>El Consorcio Nacional de Recursos de Información Científica y Tecnológica y el Centro de Investigación Científica de Yucatán (CICY), tienen el agrado de invitarle cordialmente a <strong>"Entre Pares". Cuarto Seminario para publicar y navegar en las redes de la Información Científica</strong>, cuyo objetivo central es promover la producción de artículos científicos entre la comunidad académica de posgrado e investigación del país; propiciando un espacio de encuentro con las principales editoriales científicas internacionales.</p>';
+			$html .= '<p>El Consorcio Nacional de Recursos de Información Científica y Tecnológica y el Centro de Investigación Científica de Yucatán (CICY), tienen el agrado de invitarle cordialmente a <strong>Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la Información Científica</strong>, cuyo objetivo central es promover la producción de artículos científicos entre la comunidad académica de posgrado e investigación del país; propiciando un espacio de encuentro con las principales editoriales científicas internacionales.</p>';
 			$html .= '<p>El Seminario tendrá lugar los días 5 y 6 de octubre de 2015, en el Centro de Convenciones Yucatán Siglo XXI, recinto Sede del Seminario, seleccionado por el Centro de Investigación Científica de Yucatán, institución coorganizadora del evento y cuyo programa completo podrá consultarlo en la página http://entrepares.conricyt.mx.';
 			$html .= '<p>Agradecemos su interés en participar.</p>';
 			$html .= '<p class="firma">A t e n t a m e n t e,</p>';
@@ -259,8 +261,8 @@
 			$remitente = trim($remitente);
 			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro y Carta invitaci&oacute;n para asistir al Seminario Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
 			$body .= '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a la Carta Invitaci&oacute;n, la cual podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Cuarto Seminario Entre Pares, que tendr&aacute; lugar los d&iacute;as 5 y 6 de octubre de 2015 en el Centro de Convenciones Yucatán Siglo XXI.</font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">Para confirmar tu registro en la sede es necesario que lleves impreso el comprobante de preregistro o, en su defecto, presentar el c&oacute;digo QR en un dispositivo m&oacute;vil (tablet o celular). Una vez confirmado recibir&aacute;s el kit de bienvenida en donde encontrar&aacute;s tu gafete para acceder a las actividades acad&eacute;micas del Seminario.</p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a la Carta Invitaci&oacute;n, la cual podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Cuarto Seminario Entre Pares, que tendr&aacute; lugar los d&iacute;as 5 y 6 de octubre de 2015 en el Centro de Convenciones Yucat&aacute;n Siglo XXI.</font></p>';
+			//$body .= '<p><font size="3" face="Arial" color="#006699">Para confirmar tu registro en la sede es necesario que lleves impreso el comprobante de preregistro o, en su defecto, presentar el c&oacute;digo QR en un dispositivo m&oacute;vil (tablet o celular). Una vez confirmado recibir&aacute;s el kit de bienvenida en donde encontrar&aacute;s tu gafete para acceder a las actividades acad&eacute;micas del Seminario.</p>';
 			$body .= '<p><font size="3" face="Arial" color="#FF0000">En caso de alguna duda, por favor comun&iacute;cate al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026 o bien escr&iacute;benos a la cuenta entrepares@conricyt.mx</font></p>';
 			$body .= '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#e0e0e0" align="center"><font size="3" face="Arial" color="#005199"><strong>Consorcio Nacional de Recursos de Informaci&oacute;n Cient&iacute;fica y Tecnol&oacute;gica (CONRICYT)</strong></font></td></tr></table>';
 			
@@ -283,8 +285,8 @@
 			
 			$this->phpmailer->AddAddress($data['correo'], $remitente);
 			
-			$this->phpmailer->AddStringAttachment($this->crearInvitacion($data),'invitacion.pdf');
-			$this->phpmailer->AddStringAttachment($this->crearComprobante($data, $usr),'comprobante.pdf');
+			$this->phpmailer->AddStringAttachment($this->crearInvitacion($data), 'invitacion.pdf');
+			//$this->phpmailer->AddStringAttachment($this->crearComprobante($data, $usr),'comprobante.pdf');
 			
 			$this->phpmailer->CharSet = 'UTF-8';
 			
@@ -479,6 +481,9 @@
 			if($extension) {
 				$extension = " ext. ".$extension;
 			}
+			
+			$usr = $this->input->post('hdn_usuario');
+			
 			$data['fecha_alta'] = date("Y-m-d H:i:s");
 			$data['folio'] = $this->generarFolio();
 			$data['nombre'] = $this->formatearNombre($this->input->post('nombre'));
@@ -497,7 +502,25 @@
 			$data['forma_transporte'] = $this->input->post('transporte');
 			$eventos = $this->input->post('id_evento');
 			
-			if(!$this->registro->checkUser($data['correo'])) {
+			if ( $usr ) {
+				// Se actualiza el registro
+				$this->registro->updateUser($usr, $data);
+			} else {
+				// Se inserta nuevo registro
+				$usr = $this->registro->insertData($data);
+			}
+			
+			if ( !$this->registro->checkUser($usr) ) {
+				$this->registro->insertProgram($usr, $data);
+			
+				$this->enviarMail($data, $usr);
+				//echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación, así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a> &nbsp; <a href="'.base_url('preregistro/reimprimirComprobante/'.$usr).'" target="_blank">Descargar comprobante</a></span>');
+				echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a></span>');
+			} else {
+				echo utf8_encode("El usuario ya está registrado");
+			}
+			
+			/*if(!$this->registro->checkUser($data['correo'])) {
 				$usr = $this->registro->insertData($data);
 				
 				foreach($eventos as $val) {
@@ -516,7 +539,7 @@
 				echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación, así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a> &nbsp; <a href="'.base_url('preregistro/reimprimirComprobante/'.$usr).'" target="_blank">Descargar comprobante</a></span>');
 			} else {
 				echo utf8_encode("El usuario ya está registrado");
-			}
+			}*/
 		}
 		
 		public function agregarActividades() {

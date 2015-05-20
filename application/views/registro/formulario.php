@@ -8,14 +8,6 @@
 <script type="text/javascript" src="<?php echo base_url('scripts/jquery.mask.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('scripts/registro.js'); ?>"></script>
 <script type="text/javascript">
-	function limpiar() {
-		var formulario = document.getElementById("form_prerregistro");
-		$(".mensaje").toggle();
-		$('.lbox').remove();
-		formulario.reset();
-		location.reload();
-	}
-	
 	function obtenerImagen() {
 		$.post("<?php echo base_url().'captcha'?>", '', function(data) {
 			$("#img-captcha").attr("src", "<?php echo base_url().'captcha/getImage/'; ?>"+data+"/"+Math.random());
@@ -23,11 +15,7 @@
 		});
 	}
 	
-	
-
 	$(function() {
-		
-		
 		$("#institucion").autocomplete({
 			source: "<?php echo base_url(); ?>preregistro/autocompletar",
 			minLength: 3
@@ -77,162 +65,6 @@
 				$(".otro_cargo").remove();
 			}
 		});
-		
-		$("#btn_enviar_reg").click(function() {
-			validator.element("#captcha");
-			if($("#form_prerregistro").valid()) {
-				var confirmacion = '<h4>Confirma la información capturada</h4>';
-				confirmacion += "<ul>";
-				confirmacion += "<li>Nombre: " + $("#nombre").val() + "</li>";
-				confirmacion += "<li>Apellido paterno: " + $("#ap_paterno").val() + "</li>";
-				confirmacion += "<li>Apellido materno: " + $("#ap_materno").val() + "</li>";
-				confirmacion += "<li>Sexo: " + $("#sexo option:selected").text() + "</li>";
-				confirmacion += "<li>Institución de procedencia: " + $("#institucion").val() + "</li>";
-				confirmacion += "<li>Entidad federativa: " + $("#entidad option:selected").text() + "</li>";
-				if($("#otro_perfil").length) {
-					confirmacion += "<li>Perfil: " + $("#otro_perfil").val() + "</li>";
-				} else {
-					confirmacion += "<li>Perfil: " + $("#perfil option:selected").text() + "</li>";
-				}
-				if($("#otro_cargo").length) {
-					confirmacion += "<li>Cargo: " + $("#otro_cargo").val() + "</li>";
-				} else {
-					confirmacion += "<li>Cargo: " + $("#cargo option:selected").text() + "</li>";
-				}
-				confirmacion += "<li>Teléfono: " + $("#telefono").val() + "</li>";
-				confirmacion += "<li>Correo: " + $("#correo").val() + "</li>";
-				confirmacion += "<li>¿Cómo te enteraste?: " + $("#como_se_entero option:selected").text() + "</li>";
-				confirmacion += "<li>¿Cómo te transportarás?: " + $("#transporte option:selected").text() + "</li>";
-				confirmacion += "<li>22 de septiembre: " + $(".dia1:checked").length + " actividades</li>";
-				confirmacion += "<li>23 de septiembre: " + $(".dia2:checked").length + " actividades</li>";
-				confirmacion += "</ul>";
-				confirmacion += '<input type="button" id="btn_confirmar" value="Aceptar" />';
-				confirmacion += '<input type="button" id="btn_regresar" value="Regresar" />';
-				
-				$(".mensaje").html(confirmacion);
-				$(".mensaje").modal();
-
-				$("#btn_confirmar").click(function() {
-					$(".mensaje").html('<br /><br /><img src="<?php echo base_url(); ?>images/loading.gif" />');
-					$.post('<?php echo base_url();?>preregistro/alta',
-							$("#form_prerregistro").serialize(),
-							function(data) {
-								$(".mensaje").toggle();
-								$('.lbox').remove();
-								$(".mensaje").html('<br/><h3>'+data+'</h3><br/><input type="button" id="btn_limpiar" value="Aceptar" onclick="limpiar();" />');
-								$(".mensaje").modal();
-							}
-					);
-				});
-			} else {
-				alert("Revisa cuidadosamente que hayas llenado la información solicitada en cada una de las pestañas");
-			}
-		});
-
-		
-		
-		
-
-		
-
-		var validator = $("#form_prerregistro").validate({
-			errorElement: 'span',
-			onkeyup: false,
-			ignore: [],
-			rules: {
-				nombre: {
-					required: true
-				},
-				ap_paterno: {
-					required: true
-				},
-				ap_materno: {
-					required: true
-				},
-				sexo: "required",
-				institucion: {
-					required: true
-				},
-				entidad: "required",
-				perfil: "required",
-				otro_perfil: {
-					required: true
-				},
-				cargo: "required",
-				otro_cargo: {
-					required: true
-				},
-				telefono: {
-					required: true,
-					telefono: true
-				},
-				correo: {
-					required: true,
-					email: true
-				},
-				correo_conf: {
-					equalTo: "#correo"
-				},
-				como_se_entero: "required",
-				transporte: "required",
-				"id_evento[]": {
-					required: true,
-					minlength: 1
-				},
-				fecha_llegada: {
-					required: "#chk_recorrido:checked",
-					f_llegada: true
-				},
-				hora_llegada: {
-					required: "#chk_recorrido:checked",
-					h_llegada: "#fecha_llegada"
-				},
-				celular: {
-					required: "#chk_recorrido:checked",
-				},
-				captcha: {
-					required: true,
-					equalTo: "#oculto"
-				}
-			},
-			messages: {
-				nombre: "Campo obligatorio",
-				ap_paterno: "Campo obligatorio",
-				ap_materno: "Campo obligatorio",
-				sexo: "Campo obligatorio",
-				institucion: "Campo obligatorio",
-				entidad: "Campo obligatorio",
-				perfil: "Campo obligatorio",
-				otro_perfil: "Campo obligatorio",
-				cargo: "Campo obligatorio",
-				otro_cargo: "Campo obligatorio",
-				telefono: {
-					required: "Campo obligatorio",
-					telefono: "Teléfono inválido"
-				},
-				correo: {
-					required: "Campo obligatorio",
-					email: "Correo inválido"
-				},
-				correo_conf: "Verifique el correo",
-				como_se_entero: "Campo obligatorio",
-				transporte: "Campo obligatorio",
-				"id_evento[]": "Selecciona al menos una actividad en cualquiera de las dos fechas",
-				fecha_llegada: {
-					required: "Campo obligatorio",
-					f_llegada: "Debes llegar a más tardar el día 21 de septiembre"
-				},
-				hora_llegada: {
-					required: "Campo obligatorio",
-					h_llegada: "La hora de llegada no es válida"
-				},
-				celular: "Campo obligatorio",
-				captcha: {
-					required: "Campo obligatorio",
-					equalTo: "Código inválido"
-				}
-			}
-		});
 	});
 </script>
 <link href="<?php echo base_url('css/jquery-ui.min.css'); ?>" rel="stylesheet" type="text/css" />
@@ -255,6 +87,15 @@
 <div id="tab1">
   <div class="preregistro">
 <?php
+	$attr = array(
+				'id'		=>	'hdn_usuario',
+				'name'		=>	'hdn_usuario',
+				'type'		=>	'hidden',
+				'value'		=>	''
+			);
+	echo form_input($attr);
+	 
+	echo '<div class="datos">';
 	echo form_label('* Nombre(s):');
 	$attr = array(
 				 'id'		=>	'nombre',
@@ -350,6 +191,7 @@
 				 'name'		=>	'extension'
 				 );
 	echo form_input($attr);
+	echo '</div>';  // Div datos
 	
 	echo form_label('* Correo electrónico:');
 	$attr = array(
@@ -367,6 +209,7 @@
 				 );
 	echo form_input($attr);
 
+	echo '<div class="datos">';
 	echo form_label('* ¿Cómo te enteraste del Seminario?');
 	$attr = 'id = "como_se_entero"';
 	$opciones = array('' => 'Seleccione');
@@ -382,6 +225,7 @@
 		$opciones += array($val->id => $val->transporte);
 	}
 	echo form_dropdown('transporte', $opciones, '', $attr);
+	echo '</div>';  // Div datos
 ?>
   </div> <!-- Termina contenedor del formulario -->
   <div style="clear:both;"></div>
@@ -470,11 +314,11 @@
     <div style="clear:both;"></div>
   </div>
 </div>
-<div class="btn_tabs">
+<div class="btn_tabs" style="display: none;">
   <span><button id="btn_ant_tab">Anterior</button></span>
   <button id="btn_sig_tab">Siguiente</button>
 </div>
-<div class="div-captcha" style="display:none;">
+<div class="div-captcha">
   <?php
 	echo form_label('* Escriba el texto que se muestra:');
 	$attr = array(

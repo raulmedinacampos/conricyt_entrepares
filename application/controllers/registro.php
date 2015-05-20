@@ -73,6 +73,15 @@
 			}
 		}
 		
+		public function consultarUsuario() {
+			$correo = addslashes($this->input->post('correo'));
+			$usuario = $this->registro->getUserByMail($correo);
+				
+			if($usuario) {
+				echo json_encode($usuario);
+			}
+		}
+		
 		public function checkUser() {
 			$folio = addslashes($this->input->post('folio'));
 			$nombre = addslashes($this->input->post('nombre'));
