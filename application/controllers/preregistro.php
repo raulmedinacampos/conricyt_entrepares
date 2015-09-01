@@ -101,49 +101,54 @@
 			$html .= '<p><strong>Actividades seleccionadas:</strong></p>';
 			
 			if($usr) {
-				$actividades1 = $this->registro->getActivitiesByUserDate($usr, '2014-09-22');
-				$actividades2 = $this->registro->getActivitiesByUserDate($usr, '2014-09-23');
+				$actividades1 = $this->registro->getActivitiesByUserDate($usr, '2015-10-05');
+				$actividades2 = $this->registro->getActivitiesByUserDate($usr, '2015-10-06');
 				$estatus_recorrido = $this->registro->getStatusTour($usr);
 			} else {
-				$actividades1 = $this->registro->getActivitiesByUserDate($data['id_usuario'], '2014-09-22');
-				$actividades2 = $this->registro->getActivitiesByUserDate($data['id_usuario'], '2014-09-23');
+				$actividades1 = $this->registro->getActivitiesByUserDate($data['id_usuario'], '2015-10-05');
+				$actividades2 = $this->registro->getActivitiesByUserDate($data['id_usuario'], '2015-10-06');
 				$estatus_recorrido = $this->registro->getStatusTour($data['id_usuario']);
 			}
 			
 			$estatus_recorrido = ($estatus_recorrido) ? $estatus_recorrido->estatus : 0;
 			
 			if($estatus_recorrido == '1') {
-				$html .= '<strong>21 de septiembre</strong>';
-				$html .= '<p>13:00 a 20:30 &nbsp; Recorrido turístico a la Ciudad de Guanajuato.<br />Lugar de Reunión: Poliforum León.</p>';
+				$html .= '<strong>4 de octubre</strong>';
+				$html .= '<p>13:00 a 22:45 &nbsp; Recorrido turístico a la Zona Arqueológica de Uxmal.<br />Lugar de Reunión: Estacionamiento Centro de Convenciones S. XXI.</p>';
 				$html .= '<p>Nota: Si por alguna razón no puedes asistir al Recorrido Turístico es importante que te comuniques con la Oficina del Consorcio para cancelar tu lugar y otorgárselo a alguien más. Comunícate al (55) 5322 7700 Ext. 4020-4026</p>';
 			} else if($estatus_recorrido == '2'){
-				$html .= '<strong>21 de septiembre</strong>';
-				$html .= '<p>16:00 a 19:00 &nbsp; Recorrido turístico a la Ciudad de Guanajuato.</p>';
-				$html .= '<p>Podrás unirte al Recorrido Turístico en la Ciudad de Guanajuato. El grupo se reunirá en el Teatro Juárez a las 16 hrs, aunque puedes llegar antes. Recuerda que los gastos de la comida y del transporte que uses corren por tu cuenta.</p>';
-				$html .= '<p>Consulta el itinerario del Recorrido en http://entrepares.conricyt.mx/sobre-el-evento/actividades-extraseminario</p>';
+				$html .= '<strong>4 de octubre</strong>';
+				$html .= '<p>Si usted piensa asistir al Recorrido turístico a Uxmal puede contratar los servicios de Amigo Yucatán al teléfono 01 (999) 920 0104 con David Escalente</p>';
+				$html .= '<p>o consulte los horarios en el programa en http://entrepares.conricyt.mx/programa/4-octubre-2015</p>';
+				$html .= '<p>Le recordamos que el espectáculo de luz y sonido tiene un costo el cuál debe preveer.</p>';
 			}
 			
 			if($actividades1) {
-				$html .= '<strong>22 de septiembre</strong>';
+				$html .= '<strong>5 de octubre</strong>';
 				$html .= '<ul>';
 				foreach($actividades1->result() as $actividad) {
-					$html .= '<li>'.$actividad->inicio.' a '.$actividad->fin.' &nbsp; '.utf8_decode($actividad->evento).'</li>';
+					$html .= '<li><strong>'.$actividad->inicio.' a '.$actividad->fin.'</strong> &nbsp; '.utf8_decode(str_replace("<br />", " ", $actividad->evento)).'</li>';
 				}
 				$html .= '</ul>';
 			}
 			
 			if($actividades2) {
-				$html .= '<strong>23 de septiembre</strong>';
+				$html .= '<strong>6 de octubre</strong>';
 				$html .= '<ul>';
 				foreach($actividades2->result() as $actividad) {
-					$html .= '<li>'.$actividad->inicio.' a '.$actividad->fin.' &nbsp; '.utf8_decode($actividad->evento).'</li>';
+					$html .= '<li><strong>'.$actividad->inicio.' a '.$actividad->fin.'</strong> &nbsp; '.utf8_decode(str_replace("<br />", " ", $actividad->evento)).'</li>';
 				}
 				$html .= '</ul>';
 			}
 			
 			$html .= '<p class="firma">A t e n t a m e n t e,</p>';
 			$html .= '<p><strong>Consorcio Nacional de Recursos de Información Científica y Tecnológica</strong></p>';
-			$stylesheet = file_get_contents(base_url().'css/pdf.css');
+			
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, base_url('css/pdf.css'));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$stylesheet = curl_exec($ch);
+			curl_close($ch);
 			
 			$this->load->library('pdf');
 			$pdf = $this->pdf->load("c", "Letter", "", "", 20, 20, 45, 30, 10, 10);
@@ -179,7 +184,12 @@
 			$html .= '<blockquote><p><img src="'.base_url().'images/firma_pdf.jpg" /></p></blockquote>';
 			$html .= '<p>Mtra. Margarita Ontiveros y Sánchez de la Barquera<br />Coordinadora General<br />Consorcio Nacional de Recursos de Información Científica y Tecnológica</p>';
 			$html .= '</div>';
-			$stylesheet = file_get_contents(base_url().'css/pdf.css');
+			
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, base_url('css/pdf.css'));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$stylesheet = curl_exec($ch);
+			curl_close($ch);
 			
 			$this->load->library('pdf');
 			$pdf = $this->pdf->load("c", "Letter", "", "", 20, 20, 45, 30, 10, 10);
@@ -259,10 +269,11 @@
 			$ap_materno = $data['ap_materno'];
 			$remitente = $nombre." ".$ap_paterno." ".$ap_materno;
 			$remitente = trim($remitente);
-			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro y Carta invitaci&oacute;n para asistir al Seminario Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
+			$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Comprobante de preregistro y Carta invitaci&oacute;n para asistir a <em>Entre Pares</em>. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
+			//$body = '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#005199" align="center"><font size="4" face="Arial" color="#e0e0e0"><strong>Carta invitaci&oacute;n para asistir al Seminario Entre Pares. Cuarto Seminario para publicar y navegar en las redes de la informaci&oacute;n cient&iacute;fica</strong></font></td></tr></table>';
 			$body .= '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">En archivo anexo se te env&iacute;a la Carta Invitaci&oacute;n, la cual podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Cuarto Seminario Entre Pares, que tendr&aacute; lugar los d&iacute;as 5 y 6 de octubre de 2015 en el Centro de Convenciones Yucat&aacute;n Siglo XXI.</font></p>';
-			//$body .= '<p><font size="3" face="Arial" color="#006699">Para confirmar tu registro en la sede es necesario que lleves impreso el comprobante de preregistro o, en su defecto, presentar el c&oacute;digo QR en un dispositivo m&oacute;vil (tablet o celular). Una vez confirmado recibir&aacute;s el kit de bienvenida en donde encontrar&aacute;s tu gafete para acceder a las actividades acad&eacute;micas del Seminario.</p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">Tu preregistro se ha realizado con &eacute;xito. En archivo adjunto te enviamos tu Carta Invitaci&oacute;n, la que podr&aacute;s utilizar para gestionar en tu instituci&oacute;n el permiso y/o vi&aacute;ticos para asistir al Cuarto Seminario <em>Entre Pares</em>; as&iacute; como tu comprobante de preregistro, en donde se enlistan las actividades seleccionadas y el cual es necesario que lleves a la sede para finalizar el proceso de registro y que se te entregue el kit de bienvenida.</font></p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">Recuerda que <em>Entre Pares</em> tendr&aacute; lugar los d&iacute;as 5 y 6 de octubre de 2015 en el Centro de Convenciones Yucat&aacute;n Siglo XXI, de la Ciudad de M&eacute;rida.</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#FF0000">En caso de alguna duda, por favor comun&iacute;cate al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026 o bien escr&iacute;benos a la cuenta entrepares@conricyt.mx</font></p>';
 			$body .= '<table width="100%" border="1" cellspacing="0" cellpadding="10" border="0" bordercolor="#FFFFFF"><tr><td bgcolor="#e0e0e0" align="center"><font size="3" face="Arial" color="#005199"><strong>Consorcio Nacional de Recursos de Informaci&oacute;n Cient&iacute;fica y Tecnol&oacute;gica (CONRICYT)</strong></font></td></tr></table>';
 			
@@ -286,7 +297,7 @@
 			$this->phpmailer->AddAddress($data['correo'], $remitente);
 			
 			$this->phpmailer->AddStringAttachment($this->crearInvitacion($data), 'invitacion.pdf');
-			//$this->phpmailer->AddStringAttachment($this->crearComprobante($data, $usr),'comprobante.pdf');
+			$this->phpmailer->AddStringAttachment($this->crearComprobante($data, $usr),'comprobante.pdf');
 			
 			$this->phpmailer->CharSet = 'UTF-8';
 			
@@ -369,9 +380,9 @@
 			$body = '<br /><br /><p><font size="3" face="Arial" color="#006699"><strong>&iexcl;Hola, '.$remitente.'!</strong></font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">Agradecemos el haber obtenido la Carta Invitaci&oacute;n, sin embargo es importante que contin&uacute;es con el procedimiento para elegir las conferencias o talleres de tu inter&eacute;s y as&iacute; concluir con tu Preregistro para el Seminario Entre Pares 2015.</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">A continuaci&oacute;n, considera los siguientes pasos:</font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">1. Dar clic o copiar y pegar la siguiente url en tu navegador:</font></p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">1. Dar clic o copiar y pegar la siguiente URL en tu navegador:</font></p>';
 			$body.= '<p><font size="3" face="Arial"><a href="'.base_url().'preregistro/seleccionar-actividades/'.md5($data['id_usuario']).'">'.base_url().'preregistro/seleccionar-actividades/'.md5($data['id_usuario']).'</a></font></p>';
-			$body .= '<p><font size="3" face="Arial" color="#006699">2. Se mostrar&aacute; una p&aacute;gina en donde encontrar&aacute;s tres botones que debes llenar de manera obligatoria. En los dos primeros botones selecciona las actividades de tu inter&eacute;s por d&iacute;a del Seminario. Y el tercero corresponde a un recorrido Tur&iacute;stico en Guanajuato si es de tu inter&eacute;s.</font></p>';
+			$body .= '<p><font size="3" face="Arial" color="#006699">2. Se mostrar&aacute; una p&aacute;gina en donde encontrar&aacute;s dos botones que debes llenar de manera obligatoria. En cada uno selecciona las actividades de tu inter&eacute;s por d&iacute;a del Seminario.</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">3. Al t&eacute;rmino del llenado del formulario deber&aacute;s dar clic sobre el bot&oacute;n "Enviar"</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#006699">4. Recibir&aacute;s un correo electr&oacute;nico con tu comprobante de Preregistro que incluye un c&oacute;digo QR que deber&aacute;s presentar en la sede para confirmar tu Registro</font></p>';
 			$body .= '<p><font size="3" face="Arial" color="#FF0000">En caso de alguna duda, por favor comun&iacute;cate al tel&eacute;fono (55) 5322 7700 ext. 4020 a 4026 o bien escr&iacute;benos a la cuenta entrepares@conricyt.mx</font></p>';
@@ -380,17 +391,18 @@
 			$this->phpmailer->IsSMTP();
 			$this->phpmailer->SMTPDebug  = 0; 
 			$this->phpmailer->SMTPAuth   = true;					// activa autenticación
-			$this->phpmailer->Host       = "pro.turbo-smtp.com";		// servidor de correo
+			//$this->phpmailer->Host       = "pro.turbo-smtp.com";		// servidor de correo
 			//$this->phpmailer->Host       = "74.125.136.108";		// servidor de correo
+			$this->phpmailer->Host       = "smtp.gmail.com";		// servidor de correo
 			$this->phpmailer->Port       = 465;                    // puerto de salida que usa Gmail
 			$this->phpmailer->SMTPSecure = 'ssl';					// protocolo de autenticación
-			$this->phpmailer->Username   = "entrepares@conricyt.mx";
-			$this->phpmailer->Password   = '76uZpdjk';
+			$this->phpmailer->Username   = "conricyt@gmail.com";
+			$this->phpmailer->Password   = 'C0nR1c17p1x3l8lu3';
 			
 			$this->phpmailer->SetFrom('entrepares@conricyt.mx', 'Entrepares CONRICyT');
 			$this->phpmailer->AddReplyTo('no-replay@conacyt.mx', 'Entrepares CONRICyT');
-			$this->phpmailer->Subject    = "Seminario Entre Pares 2014";
-			$this->phpmailer->AltBody    = "Seminario Entre Pares 2014";
+			$this->phpmailer->Subject    = "Seminario Entre Pares 2015";
+			$this->phpmailer->AltBody    = "Seminario Entre Pares 2015";
 			
 			$this->phpmailer->MsgHTML($body);
 			
@@ -417,13 +429,20 @@
 			$data['cargos'] = $this->registro->getPositions();
 			$data['medios_informacion'] = $this->registro->getInformation();
 			$data['transportes'] = $this->registro->getTransports();
-			//$data['eventos1'] = $this->registro->getSchedule('2014-09-22', '1');
-			//$data['eventos2'] = $this->registro->getSchedule('2014-09-22', '2,3,4,5,6,7,8,9');
-			//$data['columnas'] = $this->registro->getColumns(array(2,3,4,5,6,7,8,9));
-			//$data['filas1'] = $this->registro->getRows('2014-09-22', '2,3,4,5,6,7,8,9');
-			//$data['eventos3'] = $this->registro->getSchedule('2014-09-23', '1');
-			//$data['eventos4'] = $this->registro->getSchedule('2014-09-23', '2,3,4,5,6,7,8,9');
-			//$data['filas2'] = $this->registro->getRows('2014-09-23', '2,3,4,5,6,7,8,9');
+			/*$data['eventos1'] = $this->registro->getSchedule('2015-10-05', '34');
+			$data['eventos2'] = $this->registro->getSchedule('2015-10-05', '35,36,37,38,39,40,41,42,43');
+			$data['columnas'] = $this->registro->getColumns(array(35,36,37,38,39,40,41,42,43));
+			$data['filas1'] = $this->registro->getRows('2015-10-05', '35,36,37,38,39,40,41,42,43');
+			$data['eventos3'] = $this->registro->getSchedule('2015-10-06', '34');
+			$data['eventos4'] = $this->registro->getSchedule('2015-10-06', '35,36,37,38,39,40,41,42,43');
+			$data['filas2'] = $this->registro->getRows('2015-10-06', '35,36,37,38,39,40,41,42,43');*/
+			$data['eventos1'] = $this->registro->getSchedule('2015-10-05', '30');
+			$data['eventos2'] = $this->registro->getSchedule('2015-10-05', '31,32,33,34,35,36,37,38,39');
+			$data['columnas'] = $this->registro->getColumns(array(31,32,33,34,35,36,37,38,39));
+			$data['filas1'] = $this->registro->getRows('2015-10-05', '31,32,33,34,35,36,37,38,39');
+			$data['eventos3'] = $this->registro->getSchedule('2015-10-06', '30');
+			$data['eventos4'] = $this->registro->getSchedule('2015-10-06', '31,32,33,34,35,36,37,38,39');
+			$data['filas2'] = $this->registro->getRows('2015-10-06', '31,32,33,34,35,36,37,38,39');
 			$data['total_recorrido'] = $this->registro->getTotalTours();
 			$this->load->view('header', $data);
 			$this->load->view('registro/formulario', $data);
@@ -431,7 +450,7 @@
 		}
 		
 		public function seleccionar_actividades() {
-			/*$id = addslashes($this->uri->segment(3));
+			$id = addslashes($this->uri->segment(3));
 			
 			if(!$id) {
 				redirect(base_url().'preregistro/index');
@@ -443,24 +462,24 @@
 				redirect(base_url().'preregistro/index');
 			}
 			
-			$this->load->helper('form');*/
+			$this->load->helper('form');
 			$this->load->library('herramientas');
 			$herramienta = new Herramientas();
 			$data['title'] = utf8_encode('Preregistro');
 			$data['tools'] = $herramienta->printTitle(utf8_encode("Preregistro"));
 			$data['toolsPie'] = $herramienta->printBackToTop();
-			/*$data['con_actividades'] = $this->registro->userIsEnrolled($usr->id_usuario);
+			$data['con_actividades'] = $this->registro->userIsEnrolled($usr->id_usuario);
 			$data['usuario'] = $usr;
-			$data['eventos1'] = $this->registro->getSchedule('2014-09-22', '1');
-			$data['eventos2'] = $this->registro->getSchedule('2014-09-22', '2,3,4,5,6,7,8,9');
-			$data['columnas'] = $this->registro->getColumns(array(2,3,4,5,6,7,8,9));
-			$data['filas1'] = $this->registro->getRows('2014-09-22', '2,3,4,5,6,7,8,9');
-			$data['eventos3'] = $this->registro->getSchedule('2014-09-23', '1');
-			$data['eventos4'] = $this->registro->getSchedule('2014-09-23', '2,3,4,5,6,7,8,9');
-			$data['filas2'] = $this->registro->getRows('2014-09-23', '2,3,4,5,6,7,8,9');
-			$data['total_recorrido'] = $this->registro->getTotalTours();*/
+			$data['eventos1'] = $this->registro->getSchedule('2015-10-05', '34');
+			$data['eventos2'] = $this->registro->getSchedule('2015-10-05', '35,36,37,38,39,40,41,42,43');
+			$data['columnas'] = $this->registro->getColumns(array(35,36,37,38,39,40,41,42,43));
+			$data['filas1'] = $this->registro->getRows('2015-10-05', '35,36,37,38,39,40,41,42,43');
+			$data['eventos3'] = $this->registro->getSchedule('2015-10-06', '34');
+			$data['eventos4'] = $this->registro->getSchedule('2015-10-06', '35,36,37,38,39,40,41,42,43');
+			$data['filas2'] = $this->registro->getRows('2015-10-06', '35,36,37,38,39,40,41,42,43');
+			$data['total_recorrido'] = $this->registro->getTotalTours();
 			$this->load->view('header', $data);
-			//$this->load->view('registro/actividades', $data);
+			$this->load->view('registro/actividades', $data);
 			$this->load->view('footer');
 		}
 		
@@ -510,18 +529,20 @@
 				$usr = $this->registro->insertData($data);
 			}
 			
-			if ( !$this->registro->checkUser($usr) ) {
+			/*if ( !$this->registro->checkUser($usr) ) {
 				$this->registro->insertProgram($usr, $data);
 			
 				$this->enviarMail($data, $usr);
-				//echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación, así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a> &nbsp; <a href="'.base_url('preregistro/reimprimirComprobante/'.$usr).'" target="_blank">Descargar comprobante</a></span>');
-				echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a></span>');
+				echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación, así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a> &nbsp; <a href="'.base_url('preregistro/reimprimirComprobante/'.$usr).'" target="_blank">Descargar comprobante</a></span>');
+				//echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a></span>');
 			} else {
 				echo utf8_encode("El usuario ya está registrado");
-			}
+			}*/
 			
-			/*if(!$this->registro->checkUser($data['correo'])) {
-				$usr = $this->registro->insertData($data);
+			//if(!$this->registro->checkUser($data['correo'])) {
+				//$usr = $this->registro->insertData($data);
+			if ( !$this->registro->checkUser($usr) ) {
+				$this->registro->insertProgram($usr, $data);
 				
 				foreach($eventos as $val) {
 					$this->registro->insertActivity($usr, $val);
@@ -530,16 +551,22 @@
 				if($this->input->post('chk_recorrido')) {
 					$recorrido['llegada'] = $this->fechaMySQL($this->input->post('fecha_llegada'))." ".$this->input->post('hora_llegada');
 					$recorrido['celular'] = $this->input->post('celular');
-					$recorrido['estatus'] = ($this->registro->getTotalTours() < 132) ? 1: 2;
 					$recorrido['usuario'] = $usr;
-					//$this->registro->insertTour($recorrido);
+					
+					if ( $this->registro->getTotalTours() < 130 ) {
+						$recorrido['estatus'] = 1;
+					} else {
+						$recorrido['estatus'] = 2;
+					}
+					
+					$this->registro->insertTour($recorrido);
 				}
 
 				$this->enviarMail($data, $usr);
 				echo utf8_encode('¡Su solicitud se ha procesado correctamente!<br />Usted ha recibido en su cuenta de correo la carta invitación, así como las indicaciones correspondientes<br /><span style="font-size:12px;"><a href="'.base_url('preregistro/reimprimirInvitacion/'.$usr).'" target="_blank">Descargar invitación</a> &nbsp; <a href="'.base_url('preregistro/reimprimirComprobante/'.$usr).'" target="_blank">Descargar comprobante</a></span>');
 			} else {
 				echo utf8_encode("El usuario ya está registrado");
-			}*/
+			}
 		}
 		
 		public function agregarActividades() {
@@ -554,9 +581,12 @@
 				if($this->input->post('chk_recorrido')) {
 					$recorrido['llegada'] = $this->fechaMySQL($this->input->post('fecha_llegada'))." ".$this->input->post('hora_llegada');
 					$recorrido['celular'] = $this->input->post('celular');
-					$recorrido['estatus'] = ($this->registro->getTotalTours() < 132) ? 1: 2;
+					$recorrido['estatus'] = 1;
 					$recorrido['usuario'] = $usr;
-					//$this->registro->insertTour($recorrido);
+					
+					if ( $this->registro->getTotalTours() < 130 ) {
+						$this->registro->insertTour($recorrido);
+					}
 				}
 
 				$this->enviarMailComprobante($usr);
@@ -592,6 +622,8 @@
 		}
 		
 		public function reimprimirComprobante() {
+			error_reporting(0);
+			
 			$id = $this->uri->segment(3);
 			settype($id, "int");
 			$datos = $this->registro->getUserById($id);
